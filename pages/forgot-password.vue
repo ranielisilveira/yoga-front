@@ -3,17 +3,17 @@
     <v-divider></v-divider>
     <v-card flat>
       <v-card-title class="headline justify-center">
-        Recuperação de Senha
+        {{ $vuetify.lang.t('$vuetify.auth.password_recovery') }}
       </v-card-title>
-      <v-card-subtitle class="text-center mb-3"
-        >Digite seu email de login.</v-card-subtitle
-      >
+      <v-card-subtitle class="text-center mb-3">
+        {{ $vuetify.lang.t('$vuetify.auth.type_your_email') }}
+      </v-card-subtitle>
 
       <v-card-text class="pb-0">
         <v-form>
           <v-text-field
             v-model="email"
-            label="Seu email"
+            :label="$vuetify.lang.t('$vuetify.auth.type_your_email')"
             name="email"
             type="text"
             solo-inverted
@@ -23,7 +23,9 @@
         </v-form>
       </v-card-text>
       <v-card-actions>
-        <v-btn nuxt text color="purple darken-2" to="/">Entrar</v-btn>
+        <v-btn nuxt text color="purple darken-2" to="/">
+          {{ $vuetify.lang.t('$vuetify.auth.enter') }}
+        </v-btn>
         <v-spacer />
         <v-btn
           depressed
@@ -32,7 +34,7 @@
           class="px-12"
           large
           @click="forgotPassword"
-          >Enviar
+          >{{ $vuetify.lang.t('$vuetify.auth.sent') }}
         </v-btn>
       </v-card-actions>
     </v-card>
@@ -49,7 +51,7 @@ export default {
   },
   head() {
     return {
-      title: 'Recuperação de Senha',
+      title: this.$vuetify.lang.t('$vuetify.auth.password_recovery'),
     }
   },
   computed: {
@@ -62,7 +64,7 @@ export default {
     async forgotPassword() {
       if (!this.isFilled) {
         this.$nuxt.$emit('text-toasty', {
-          text: 'Favor preencher e email',
+          text: this.$vuetify.lang.t('$vuetify.auth.data_not_filled'),
         })
 
         return false

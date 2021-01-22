@@ -3,17 +3,17 @@
     <v-divider></v-divider>
     <v-card flat>
       <v-card-title class="headline justify-center">
-        Criar Nova Senha
+        {{ $vuetify.lang.t('$vuetify.auth.create_new_password') }}
       </v-card-title>
       <v-card-subtitle class="text-center mb-3">
-        Escolha uma nova senha para sua conta.
+        {{ $vuetify.lang.t('$vuetify.auth.pick_new_password') }}
       </v-card-subtitle>
 
       <v-card-text class="pb-0">
         <v-form>
           <v-text-field
             v-model="email"
-            label="Seu email"
+            :label="$vuetify.lang.t('$vuetify.auth.your_email')"
             name="email"
             type="text"
             solo-inverted
@@ -24,7 +24,7 @@
           <v-text-field
             id="password"
             v-model="password"
-            label="Nova senha"
+            :label="$vuetify.lang.t('$vuetify.auth.new_password')"
             name="password"
             type="password"
             flat
@@ -34,7 +34,7 @@
           <v-text-field
             id="password_confirmation"
             v-model="password_confirmation"
-            label="Confirmar senha"
+            :label="$vuetify.lang.t('$vuetify.auth.confirm_new_password')"
             name="password_confirmation"
             type="password"
             flat
@@ -44,7 +44,9 @@
         </v-form>
       </v-card-text>
       <v-card-actions>
-        <v-btn nuxt text color="purple darken-2" to="/">Entrar</v-btn>
+        <v-btn nuxt text color="purple darken-2" to="/">
+          {{ $vuetify.lang.t('$vuetify.auth.enter') }}
+        </v-btn>
         <v-spacer />
         <v-btn
           depressed
@@ -54,7 +56,7 @@
           large
           :disabled="!isFilled"
           @click="resetPassword"
-          >Criar Senha
+          >{{ $vuetify.lang.t('$vuetify.auth.create_password') }}
         </v-btn>
       </v-card-actions>
       <v-divider class="mb-5 mt-5"></v-divider>
@@ -68,7 +70,7 @@
         {{ mail_token }}
       </v-alert>
       <v-alert v-else type="error" border="top" color="red" dark>
-        O código de segurança deve ser informado
+        {{ $vuetify.lang.t('$vuetify.auth.mail_token_error') }}
       </v-alert>
     </v-card>
   </div>
@@ -87,7 +89,7 @@ export default {
   },
   head() {
     return {
-      title: 'Recuperação de Senha',
+      title: this.$vuetify.lang.t('$vuetify.auth.password_recovery'),
     }
   },
   computed: {
@@ -111,7 +113,7 @@ export default {
 
       if (!this.isFilled) {
         this.$nuxt.$emit('text-toasty', {
-          text: 'Favor preencher os dados',
+          text: this.$vuetify.lang.t('$vuetify.auth.data_not_filled'),
         })
         this.$nuxt.$emit('loader-false')
         return false

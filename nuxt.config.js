@@ -1,6 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
-import pt from 'vuetify/es5/locale/pt'
-import en from 'vuetify/es5/locale/en'
+import pt from './plugins/pt_BR-locale'
+import en from './plugins/en-locale'
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
@@ -94,7 +94,7 @@ export default {
   vuetify: {
     lang: {
       locales: { pt, en },
-      current: 'pt',
+      current: 'en',
     },
     customVariables: ['~/assets/variables.scss'],
     theme: {
