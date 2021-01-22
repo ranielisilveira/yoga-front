@@ -3,10 +3,10 @@
     <v-divider></v-divider>
     <v-card flat>
       <v-card-title class="headline justify-center">
-        {{ $vuetify.lang.t('$vuetify.auth.enter') }}
+        {{ $t('auth.enter') }}
       </v-card-title>
       <v-card-subtitle class="text-center mb-3">
-        {{ $vuetify.lang.t('$vuetify.auth.enter_desc') }}
+        {{ $t('auth.enter_desc') }}
       </v-card-subtitle>
       <v-card-subtitle class="text-center mb-3"
         >Entre com seu email e senha.</v-card-subtitle
@@ -19,14 +19,14 @@
         color="green lighten-2"
         dark
       >
-        {{ $vuetify.lang.t('$vuetify.auth.email_confirmed') }}
+        {{ $t('auth.email_confirmed') }}
       </v-alert>
 
       <v-card-text class="pb-0">
         <v-form>
           <v-text-field
             v-model="email"
-            :label="$vuetify.lang.t('$vuetify.auth.your_email')"
+            :label="$t('auth.your_email')"
             name="email"
             type="text"
             solo-inverted
@@ -37,7 +37,7 @@
           <v-text-field
             id="password"
             v-model="password"
-            :label="$vuetify.lang.t('$vuetify.auth.your_password')"
+            :label="$t('auth.your_password')"
             name="password"
             type="password"
             solo-inverted
@@ -55,15 +55,15 @@
           large
           block
           @click="login"
-          >{{ $vuetify.lang.t('$vuetify.auth.enter') }}
+          >{{ $t('auth.enter') }}
         </v-btn>
-        <v-btn block nuxt text color="purple darken-2" to="/forgot-password">{{
-          $vuetify.lang.t('$vuetify.auth.forgot_password')
+        <v-btn block nuxt text color="blue lighten-2" to="/forgot-password">{{
+          $t('auth.forgot_password')
         }}</v-btn>
       </v-sheet>
       <v-card-actions v-else class="text-center">
-        <v-btn nuxt text color="purple darken-2" to="/forgot-password">{{
-          $vuetify.lang.t('$vuetify.auth.forgot_password')
+        <v-btn nuxt text color="blue lighten-2" to="/forgot-password">{{
+          $t('auth.forgot_password')
         }}</v-btn>
         <v-spacer />
         <v-btn
@@ -73,9 +73,14 @@
           class="px-12"
           large
           @click="login"
-          >{{ $vuetify.lang.t('$vuetify.auth.enter') }}
+          >{{ $t('auth.enter') }}
         </v-btn>
       </v-card-actions>
+
+      <v-divider class="mt-4 mb-4"></v-divider>
+      <v-btn block nuxt text color="purple darken-2" to="/forgot-password">{{
+        $t('auth.create_account')
+      }}</v-btn>
     </v-card>
   </div>
 </template>
@@ -93,7 +98,7 @@ export default {
   },
   head() {
     return {
-      title: this.$vuetify.lang.t('$vuetify.auth.enter'),
+      title: this.$t('auth.enter'),
     }
   },
   computed: {
@@ -111,7 +116,7 @@ export default {
 
       if (!this.isFilled) {
         this.$nuxt.$emit('text-toasty', {
-          text: this.$vuetify.lang.t('$vuetify.auth.data_not_filled'),
+          text: this.$t('auth.data_not_filled'),
         })
         this.$nuxt.$emit('loader-false')
         return false

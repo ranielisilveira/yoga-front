@@ -91,6 +91,7 @@
               Perfil
             </v-list-item-title>
           </v-list-item>
+          <LangSwitcher />
           <v-list-item @click="logout">
             <v-list-item-title>
               <v-icon>mdi-power</v-icon>
@@ -140,8 +141,9 @@
 <script>
 import map from 'lodash/map'
 import TopMenu from '../components/TopMenu'
+import LangSwitcher from '../components/LangSwitcher'
 export default {
-  components: { TopMenu },
+  components: { TopMenu, LangSwitcher },
   middleware: 'auth',
   data() {
     return {

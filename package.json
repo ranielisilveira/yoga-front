@@ -24,7 +24,8 @@
     "@nuxtjs/pwa": "^3.3.4",
     "@nuxtjs/style-resources": "^1.0.0",
     "core-js": "^3.8.2",
-    "nuxt": "^2.14.12"
+    "nuxt": "^2.14.12",
+    "nuxt-i18n": "^6.18.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^5.0.0",

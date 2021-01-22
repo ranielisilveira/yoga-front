@@ -2,9 +2,7 @@
   <div>
     <v-row>
       <v-col :sm="12" :md="4" :lg="3">
-        <pre>
-          <code>{{ $auth.user }}</code>
-        </pre>
+        {{ $t('auth.enter') }}
       </v-col>
     </v-row>
   </div>
@@ -12,7 +10,6 @@
 
 <script>
 export default {
-  components: {},
   data: () => ({}),
   head() {
     return {

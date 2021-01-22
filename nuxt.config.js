@@ -2,6 +2,8 @@ import colors from 'vuetify/es5/util/colors'
 import pt from './plugins/pt_BR-locale'
 import en from './plugins/en-locale'
 
+import I18N from './config'
+
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
@@ -47,6 +49,7 @@ export default {
     // Doc: https://auth.nuxtjs.org/
     '@nuxtjs/auth',
     '@nuxtjs/style-resources',
+    ['nuxt-i18n', I18N],
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
