@@ -25,4 +25,7 @@ export default {
   },
   data_not_filled: 'Please fill in the details',
   email_not_filled: 'Please fill in the email',
+  page_not_found: 'Page Not Found.',
+  otherError: 'An error occurred',
+  home_page: 'Home page',
 }

@@ -25,4 +25,7 @@ export default {
   data_not_filled: 'Favor preencher os dados',
   email_not_filled: 'Favor preencher o email',
   logout_success: 'Você foi deslogado com sucesso.',
+  page_not_found: 'Página não encotrada.',
+  error: 'Ocorreu um erro.',
+  home_page: 'Página Inicial',
 }
