@@ -78,7 +78,7 @@
       </v-card-actions>
 
       <v-divider class="mt-4 mb-4"></v-divider>
-      <v-btn block nuxt text color="purple darken-2" to="/forgot-password">{{
+      <v-btn block nuxt text color="purple darken-2" to="/register">{{
         $t('auth.create_account')
       }}</v-btn>
     </v-card>

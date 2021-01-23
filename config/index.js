@@ -16,9 +16,9 @@ export default {
       flagSrc: 'https://cdn.vuetifyjs.com/images/flags/br.png',
     },
   ],
-  defaultLocale: 'en',
+  defaultLocale: 'pt',
   vueI18n: {
-    fallbackLocale: 'en',
+    fallbackLocale: 'pt',
     messages: { en, pt },
   },
 }

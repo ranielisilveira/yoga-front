@@ -24,7 +24,7 @@
       </v-card-text>
       <v-card-actions>
         <v-btn nuxt text color="purple darken-2" to="/">
-          {{ $t('auth.enter') }}
+          <v-icon>mdi-chevron-left</v-icon> {{ $t('auth.enter') }}
         </v-btn>
         <v-spacer />
         <v-btn

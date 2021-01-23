@@ -3,14 +3,23 @@
     <v-divider></v-divider>
     <v-card flat>
       <v-card-title class="headline justify-center">
-        {{ $t('auth.create_new_password') }}
+        {{ $t('auth.create_account') }}
       </v-card-title>
       <v-card-subtitle class="text-center mb-3">
-        {{ $t('auth.pick_new_password') }}
+        {{ $t('auth.register_desc') }}
       </v-card-subtitle>
 
       <v-card-text class="pb-0">
         <v-form>
+          <v-text-field
+            v-model="name"
+            :label="$t('auth.your_name')"
+            name="name"
+            type="text"
+            solo-inverted
+            flat
+          />
+
           <v-text-field
             v-model="email"
             :label="$t('auth.your_email')"
@@ -38,10 +47,31 @@
             type="password"
             flat
             solo-inverted
-            @keyup.enter.native="resetPassword"
+            @keyup.enter.native="createAccount"
           />
         </v-form>
+        <v-sheet class="text-center">
+          <v-btn-toggle
+            v-model="language"
+            tile
+            color="deep-purple accent-3"
+            group
+          >
+            <v-btn
+              v-for="(locale, i) in $i18n.locales"
+              :key="i"
+              :to="switchLocalePath(locale.code)"
+              :disabled="locale === $i18n.locale"
+              :value="locale.code"
+              small
+              @click="changeLanguage(locale.code)"
+            >
+              <img :src="locale.flagSrc" :alt="locale.name" /> {{ locale.name }}
+            </v-btn>
+          </v-btn-toggle>
+        </v-sheet>
       </v-card-text>
+      <v-divider class="mt-3 mb-3"></v-divider>
       <v-card-actions>
         <v-btn nuxt text color="purple darken-2" to="/">
           <v-icon>mdi-chevron-left</v-icon> {{ $t('auth.enter') }}
@@ -54,24 +84,11 @@
           class="px-12"
           large
           :disabled="!isFilled"
-          @click="resetPassword"
+          @click="createAccount"
         >
-          {{ $t('auth.create_password') }}
+          {{ $t('auth.create_account') }}
         </v-btn>
       </v-card-actions>
-      <v-divider class="mb-5 mt-5"></v-divider>
-      <v-alert
-        v-if="mail_token"
-        type="info"
-        border="top"
-        color="purple darken-2"
-        dark
-      >
-        {{ mail_token }}
-      </v-alert>
-      <v-alert v-else type="error" border="top" color="red" dark>
-        {{ $t('auth.mail_token_error') }}
-      </v-alert>
     </v-card>
   </div>
 </template>
@@ -81,15 +98,16 @@ export default {
   layout: 'guest',
   data() {
     return {
-      mail_token: null,
+      name: null,
       email: null,
       password: null,
       password_confirmation: null,
+      language: 'en',
     }
   },
   head() {
     return {
-      title: this.$t('auth.password_recovery'),
+      title: this.$t('auth.create_account'),
     }
   },
   computed: {
@@ -98,17 +116,18 @@ export default {
         this.email &&
         this.password &&
         this.password_confirmation &&
-        this.password === this.password_confirmation &&
-        this.mail_token
+        this.password === this.password_confirmation
       )
     },
   },
   mounted() {
     this.$nuxt.$emit('loader-false')
-    this.mail_token = this.$route.query.mail_token
   },
   methods: {
-    async resetPassword() {
+    changeLanguage(code) {
+      this.switchLocalePath(code)
+    },
+    async createAccount() {
       this.$nuxt.$emit('loader-true')
 
       if (!this.isFilled) {
@@ -121,11 +140,12 @@ export default {
 
       this.$nuxt.$emit('loader-true')
       await this.$axios
-        .post('/reset-password', {
-          mail_token: this.mail_token,
+        .post('/register', {
+          name: this.name,
           email: this.email,
           password: this.password,
           password_confirmation: this.password_confirmation,
+          language: this.$i18n.locale,
         })
         .then((response) => {
           this.$nuxt.$emit('loader-false')
