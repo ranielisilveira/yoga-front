@@ -1,3 +1,22 @@
+* {
+  font-size: 13px !important;
+  font-weight: 300;
+  font-family: Roboto, Helvetica, sans-serif;
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
 .v-data-table-header .v-input__control {
   min-height: 30px !important;
 }
