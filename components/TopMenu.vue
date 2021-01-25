@@ -1,6 +1,6 @@
 <template>
   <v-toolbar>
-    <div v-if="$vuetify.breakpoint.mdAndUp">
+    <div>
       <v-menu
         v-for="(item, i) in items"
         :key="i"

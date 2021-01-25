@@ -23,6 +23,16 @@ export default {
     create_account: 'Create Account',
     register_desc: 'Enter your email and choose an password.',
   },
+  admin_menu: {
+    config: 'Settings',
+    config_desc: 'Application settings',
+    categories: 'Categories',
+    redeem_codes: 'Redemption Codes',
+    media: 'Media',
+    media_desc: 'videos, books and texts',
+    videos: 'Videos',
+    about: 'About page',
+  },
   data_not_filled: 'Please fill in the details',
   email_not_filled: 'Please fill in the email',
   page_not_found: 'Page Not Found.',
@@ -30,4 +40,6 @@ export default {
   home_page: 'Home page',
   welcome: 'Bem-vindo(a)',
   admin_area: 'Área Administrativa',
+  profile: 'Profile',
+  logout: 'Logout',
 }

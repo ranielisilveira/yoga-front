@@ -22,6 +22,16 @@ export default {
     create_account: 'Criar conta',
     register_desc: 'Digite seu email e escolha uma senha.',
   },
+  admin_menu: {
+    config: 'Configurações',
+    config_desc: 'configurações do aplicativo',
+    categories: 'Categorias',
+    redeem_codes: 'Códigos de Resgate',
+    media: 'Mídia',
+    media_desc: 'vídeos, livros e textos',
+    videos: 'Vídeos',
+    about: 'Página Sobre',
+  },
   data_not_filled: 'Favor preencher os dados',
   email_not_filled: 'Favor preencher o email',
   logout_success: 'Você foi deslogado com sucesso.',
@@ -30,4 +40,6 @@ export default {
   home_page: 'Página Inicial',
   welcome: 'Bem-vindo(a)',
   admin_area: 'Área Administrativa',
+  profile: 'Perfil',
+  logout: 'Sair',
 }

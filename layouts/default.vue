@@ -88,14 +88,14 @@
           <v-list-item nuxt to="/profile">
             <v-list-item-title>
               <v-icon>mdi-pencil</v-icon>
-              Perfil
+              {{ $t('profile') }}
             </v-list-item-title>
           </v-list-item>
           <LangSwitcher />
           <v-list-item @click="logout">
             <v-list-item-title>
               <v-icon>mdi-power</v-icon>
-              Sair
+              {{ $t('logout') }}
             </v-list-item-title>
           </v-list-item>
         </v-list>
@@ -106,7 +106,6 @@
       <top-menu :items="menu"></top-menu>
 
       <v-container fluid>
-        default
         <nuxt></nuxt>
       </v-container>
     </v-main>

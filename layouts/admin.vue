@@ -88,14 +88,14 @@
           <v-list-item nuxt to="/profile">
             <v-list-item-title>
               <v-icon>mdi-pencil</v-icon>
-              Perfil
+              {{ $t('profile') }}
             </v-list-item-title>
           </v-list-item>
           <LangSwitcher />
           <v-list-item @click="logout">
             <v-list-item-title>
               <v-icon>mdi-power</v-icon>
-              Sair
+              {{ $t('logout') }}
             </v-list-item-title>
           </v-list-item>
         </v-list>
@@ -103,7 +103,7 @@
     </v-app-bar>
 
     <v-main>
-      <top-menu :items="menu"></top-menu>
+      <top-menu v-if="$vuetify.breakpoint.mdAndUp" :items="menu"></top-menu>
 
       <v-container fluid>
         <nuxt></nuxt>
@@ -169,15 +169,40 @@ export default {
         {
           icon: 'mdi-chevron-up',
           'icon-alt': 'mdi-chevron-down',
-          title: 'Configurações',
-          subtitle: 'Controle de Items',
+          title: this.$t('admin_menu.config'),
+          subtitle: this.$t('admin_menu.config_desc'),
           model: false,
           route: false,
           children: [
             {
-              icon: 'mdi-plus',
-              title: 'Nome do Menu',
-              route: '/route',
+              icon: 'mdi-info',
+              title: this.$t('admin_menu.categories'),
+              route: '/admin/categories',
+            },
+            {
+              icon: 'mdi-info',
+              title: this.$t('admin_menu.redeem_codes'),
+              route: '/admin/redeem-codes',
+            },
+          ],
+        },
+        {
+          icon: 'mdi-chevron-up',
+          'icon-alt': 'mdi-chevron-down',
+          title: this.$t('admin_menu.media'),
+          subtitle: this.$t('admin_menu.media_desc'),
+          model: false,
+          route: false,
+          children: [
+            {
+              icon: 'mdi-info',
+              title: this.$t('admin_menu.videos'),
+              route: '/admin/videos',
+            },
+            {
+              icon: 'mdi-info',
+              title: this.$t('admin_menu.about'),
+              route: '/admin/about',
             },
           ],
         },
