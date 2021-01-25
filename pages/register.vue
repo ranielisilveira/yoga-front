@@ -96,15 +96,13 @@
 <script>
 export default {
   layout: 'guest',
-  data() {
-    return {
-      name: null,
-      email: null,
-      password: null,
-      password_confirmation: null,
-      language: 'en',
-    }
-  },
+  data: () => ({
+    name: null,
+    email: null,
+    password: null,
+    password_confirmation: null,
+    language: 'en',
+  }),
   head() {
     return {
       title: this.$t('auth.create_account'),

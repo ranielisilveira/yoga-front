@@ -15,11 +15,9 @@
 <script>
 export default {
   layout: 'guest',
-  data() {
-    return {
-      categories: [],
-    }
-  },
+  data: () => ({
+    categories: [],
+  }),
   async fetch() {
     this.$nuxt.$emit('loader-true')
     this.categories = await this.$axios

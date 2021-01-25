@@ -88,14 +88,12 @@
 <script>
 export default {
   layout: 'guest',
-  data() {
-    return {
-      error: null,
-      email: null,
-      password: null,
-      confirm: null,
-    }
-  },
+  data: () => ({
+    error: null,
+    email: null,
+    password: null,
+    confirm: null,
+  }),
   head() {
     return {
       title: this.$t('auth.enter'),
@@ -130,7 +128,9 @@ export default {
           },
         })
         .then(() => {
-          this.$router.push(`/dashboard`)
+          this.$auth.is_admin
+            ? this.$router.push({ path: `/admin` })
+            : this.$router.push({ path: `/home` })
         })
         .catch((error) => {
           this.$nuxt.$emit('loader-false')

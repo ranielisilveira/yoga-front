@@ -79,14 +79,12 @@
 <script>
 export default {
   layout: 'guest',
-  data() {
-    return {
-      mail_token: null,
-      email: null,
-      password: null,
-      password_confirmation: null,
-    }
-  },
+  data: () => ({
+    mail_token: null,
+    email: null,
+    password: null,
+    password_confirmation: null,
+  }),
   head() {
     return {
       title: this.$t('auth.password_recovery'),

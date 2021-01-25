@@ -44,11 +44,9 @@
 <script>
 export default {
   layout: 'guest',
-  data() {
-    return {
-      email: null,
-    }
-  },
+  data: () => ({
+    email: null,
+  }),
   head() {
     return {
       title: this.$t('auth.password_recovery'),
