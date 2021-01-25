@@ -2,7 +2,7 @@
   <div>
     <v-row>
       <v-col :sm="12" :md="4" :lg="3">
-        {{ $t('auth.enter') }}
+        {{ $t('auth.area') }}
       </v-col>
     </v-row>
   </div>
@@ -10,6 +10,7 @@
 
 <script>
 export default {
+  layout: 'admin',
   data: () => ({}),
   head() {
     return {

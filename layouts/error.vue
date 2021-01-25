@@ -19,7 +19,7 @@ export default {
       default: null,
     },
   },
-  data() {},
+  data: () => ({}),
   head() {
     const title =
       this.error.statusCode === 404 ? this.pageNotFound : this.otherError

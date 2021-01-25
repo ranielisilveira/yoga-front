@@ -76,7 +76,9 @@ export default {
   },
   mounted() {
     if (this.$auth.loggedIn) {
-      this.$router.push('/dashboard')
+      this.$auth.is_admin
+        ? this.$router.push({ path: `/admin` })
+        : this.$router.push({ path: `/home` })
     }
   },
   created() {

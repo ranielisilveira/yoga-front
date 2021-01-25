@@ -70,7 +70,7 @@
         @click.stop="drawer = !drawer"
       />
       <v-toolbar-title style="width: 150px" class="ml-0 p-1">
-        <NuxtLink to="/home">
+        <NuxtLink to="/admin">
           <v-img contain :src="require('./../static/logo-light.png')"></v-img>
         </NuxtLink>
       </v-toolbar-title>
@@ -106,7 +106,6 @@
       <top-menu :items="menu"></top-menu>
 
       <v-container fluid>
-        default
         <nuxt></nuxt>
       </v-container>
     </v-main>
@@ -145,7 +144,7 @@ import TopMenu from '../components/TopMenu'
 import LangSwitcher from '../components/LangSwitcher'
 export default {
   components: { TopMenu, LangSwitcher },
-  middleware: ['auth', 'user'],
+  middleware: ['auth', 'admin'],
   data: () => ({
     loader: true,
     clipped: true,
@@ -163,24 +162,30 @@ export default {
       color: undefined,
       text: 'Ocorreu um erro',
     },
-    menu: [
-      {
-        icon: 'mdi-chevron-up',
-        'icon-alt': 'mdi-chevron-down',
-        title: 'Configurações',
-        subtitle: 'Controle de Items',
-        model: false,
-        route: false,
-        children: [
-          {
-            icon: 'mdi-plus',
-            title: 'Nome do Menu',
-            route: '/route',
-          },
-        ],
-      },
-    ],
   }),
+  computed: {
+    menu() {
+      const menu = [
+        {
+          icon: 'mdi-chevron-up',
+          'icon-alt': 'mdi-chevron-down',
+          title: 'Configurações',
+          subtitle: 'Controle de Items',
+          model: false,
+          route: false,
+          children: [
+            {
+              icon: 'mdi-plus',
+              title: 'Nome do Menu',
+              route: '/route',
+            },
+          ],
+        },
+      ]
+
+      return menu
+    },
+  },
   created() {
     if (!this.$auth.loggedIn) {
       this.$auth.logout()

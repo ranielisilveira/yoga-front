@@ -28,4 +28,6 @@ export default {
   page_not_found: 'Página não encotrada.',
   error: 'Ocorreu um erro.',
   home_page: 'Página Inicial',
+  welcome: 'Bem-vindo(a)',
+  admin_area: 'Área Administrativa',
 }

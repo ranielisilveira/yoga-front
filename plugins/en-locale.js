@@ -28,4 +28,6 @@ export default {
   page_not_found: 'Page Not Found.',
   otherError: 'An error occurred',
   home_page: 'Home page',
+  welcome: 'Bem-vindo(a)',
+  admin_area: 'Área Administrativa',
 }
