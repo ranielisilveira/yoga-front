@@ -14,11 +14,13 @@
       </v-card-text>
       <v-divider></v-divider>
       <v-card-actions>
-        <v-btn color="blue-grey white--text" @click="show = false"
-          >Cancelar</v-btn
-        >
+        <v-btn color="blue-grey white--text" @click="show = false">
+          {{ $t('cancel') }}
+        </v-btn>
         <v-spacer></v-spacer>
-        <v-btn color="red white--text" @click="confirm">Confirmar</v-btn>
+        <v-btn color="success white--text" @click="confirm">
+          {{ $t('confirm') }}
+        </v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>

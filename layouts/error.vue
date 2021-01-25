@@ -21,8 +21,7 @@ export default {
   },
   data: () => ({}),
   head() {
-    const title =
-      this.error.statusCode === 404 ? this.pageNotFound : this.otherError
+    const title = this.error.statusCode === 404 ? this.pageNotFound : this.error
     return {
       title,
     }
