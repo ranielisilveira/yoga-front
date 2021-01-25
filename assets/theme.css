@@ -1,5 +1,5 @@
 * {
-  font-size: 13px !important;
+  font-size: 13.5px !important;
   font-weight: 300;
   font-family: Roboto, Helvetica, sans-serif;
   word-spacing: 1px;
@@ -19,4 +19,13 @@
 
 .v-data-table-header .v-input__control {
   min-height: 30px !important;
+}
+
+.v-alert--dense {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+.v-alert.v-alert--dense  {
+  margin-bottom: 0px !important;
 }
