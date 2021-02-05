@@ -18,19 +18,19 @@
       </v-btn>
     </template>
     <v-card>
-      <v-toolbar dark :color="category.color">
+      <v-toolbar dark color="green">
         <v-btn icon dark @click="show = false">
           <v-icon>mdi-close</v-icon>
         </v-btn>
-        <v-toolbar-title v-if="category.id">
-          {{ category.name[$i18n.locale] }}
+        <v-toolbar-title v-if="redeem_code.id">
+          {{ redeem_code.code }}
         </v-toolbar-title>
         <v-toolbar-title v-else>
-          {{ $t('categories.new') }}
+          {{ $t('redeem_codes.new') }}
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items>
-          <v-btn v-if="category.id" dark text @click="update">
+          <v-btn v-if="redeem_code.id" dark text @click="update">
             <v-icon left>mdi-content-save</v-icon>
             {{ $t('update') }}
           </v-btn>
@@ -44,71 +44,18 @@
         <v-list-item>
           <v-list-item-content>
             <v-list-item-title>
-              {{ $t('categories.headers.parent_category_name') }}
+              {{ $t('redeem_codes.code') }}
             </v-list-item-title>
             <v-list-item-subtitle>
-              <v-select
-                v-model="category.category_id"
-                dense
-                solo
-                outlined
-                :items="categories"
-                item-text="text"
-                item-value="value"
-                hide-details="true"
-              />
-            </v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title>
-              {{ $t('categories.name') }}
-            </v-list-item-title>
-            <v-list-item-subtitle class="pt-3">
               <v-text-field
-                v-for="(locale, l) in $i18n.locales"
-                :key="l"
-                v-model="category.name[locale.code]"
-                :label="locale.name"
+                v-model="redeem_code.code"
+                label=""
+                solo
                 outlined
                 dense
                 hide-details="true"
                 autofocus
-                class="mb-2"
               ></v-text-field>
-            </v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title>
-              {{ $t('categories.color') }}
-            </v-list-item-title>
-            <v-list-item-subtitle>
-              <v-select
-                v-model="category.color"
-                solo
-                outlined
-                dense
-                :items="colors"
-                item-text="text"
-                item-value="value"
-                hide-details="true"
-              >
-                <template #selection="{ item }">
-                  <v-alert :color="item.text" dark dense>
-                    {{ item.text }}
-                  </v-alert>
-                </template>
-                <template #item="{ item }">
-                  <v-alert :color="item.text" dark dense>
-                    {{ item.text }}
-                  </v-alert>
-                </template>
-              </v-select>
             </v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
@@ -119,14 +66,10 @@
           {{ $t('cancel') }}
         </v-btn>
         <v-spacer></v-spacer>
-        <v-btn
-          v-if="category.id"
-          :color="`${category.color} white--text`"
-          @click="update"
-        >
+        <v-btn v-if="redeem_code.id" color="green white--text" @click="update">
           {{ $t('update') }}
         </v-btn>
-        <v-btn v-else :color="`${category.color} white--text`" @click="store">
+        <v-btn v-else color="green white--text" @click="store">
           {{ $t('store') }}
         </v-btn>
       </v-card-actions>
@@ -135,40 +78,20 @@
 </template>
 <script>
 export default {
-  name: 'CategoryDialog',
+  name: 'RedeemCodeDialog',
   data: () => ({
     show: false,
-    category: {
+    redeem_code: {
       id: null,
-      name: {
-        en: null,
-        pt: null,
-      },
-      color: 'red',
-      category_id: null,
+      code: null,
     },
-    colors: [],
-    categories: [],
   }),
   async fetch() {
     this.$nuxt.$emit('loader-true')
     await this.$axios
-      .get(`admin/categories/colors`)
+      .get(`admin/redeem-codes`)
       .then((response) => {
-        this.colors = response.data
-      })
-      .catch((error) => {
-        this.$nuxt.$emit('loader-false')
-        this.$nuxt.$emit('toasty', {
-          color: 'danger',
-          text: error.response.data,
-        })
-      })
-
-    await this.$axios
-      .get(`admin/categories/array`)
-      .then((response) => {
-        this.categories = response.data
+        this.redeem_codes = response.data
         this.$nuxt.$emit('loader-false')
       })
       .catch((error) => {
@@ -182,27 +105,19 @@ export default {
   methods: {
     showDialog(item) {
       this.show = true
-      this.category = item
+      this.redeem_code = item
     },
     hideDialog() {
       this.show = false
-      this.category = {
+      this.redeem_code = {
         id: null,
-        name: {
-          en: null,
-          pt: null,
-        },
-        color: 'red',
-        category_id: null,
+        code: null,
       }
     },
     async store() {
       this.$nuxt.$emit('loader-true')
       await this.$axios
-        .post(`/admin/categories`, {
-          ...this.category,
-          name: JSON.stringify(this.category.name),
-        })
+        .post(`/admin/redeem-codes`, this.redeem_code)
         .then((response) => {
           this.hideDialog()
           this.$nuxt.$emit('text-toasty', {
@@ -223,10 +138,7 @@ export default {
     async update() {
       this.$nuxt.$emit('loader-true')
       await this.$axios
-        .put(`/admin/categories/${this.category.id}`, {
-          ...this.category,
-          name: JSON.stringify(this.category.name),
-        })
+        .put(`/admin/redeem-codes/${this.redeem_code.id}`, this.redeem_code)
         .then((response) => {
           this.hideDialog()
           this.$nuxt.$emit('text-toasty', {

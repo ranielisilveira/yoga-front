@@ -22,6 +22,10 @@ export default {
   details: 'Detalhes',
   deactivate: 'Desativar',
   confirm: 'Confirmar',
+  active: 'Ativo',
+  inactive: 'Inativo',
+  taken: 'Usado',
+  available: 'Disponível',
 
   admin_menu: {
     config: 'Configurações',
@@ -57,6 +61,7 @@ export default {
   breadcumbs: {
     config: 'configurações',
     categories: 'Categorias',
+    redeem_codes: 'Códigos de Resgate',
   },
   categories: {
     head: 'Categorias',
@@ -73,6 +78,19 @@ export default {
       media: 'Média',
       color: 'Cor',
       sub_categories_count: 'Categories',
+      status: 'Situação',
+      actions: 'Ações',
+    },
+  },
+  redeem_codes: {
+    head: 'Código de Resgate',
+    delete_dialog_title: 'Deseja excluir o código selecionado?',
+    delete_dialog_info: 'Esta ação é irreversível.',
+    code: 'Código',
+    new: 'Novo Código',
+    headers: {
+      code: 'Código',
+      user: 'Usuário',
       status: 'Situação',
       actions: 'Ações',
     },

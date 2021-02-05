@@ -22,6 +22,10 @@ export default {
   details: 'Details',
   deactivate: 'Deactivate',
   confirm: 'Confirm',
+  active: 'Active',
+  inactive: 'Inactive',
+  taken: 'Taken',
+  available: 'Available',
 
   admin_menu: {
     config: 'Settings',
@@ -57,6 +61,7 @@ export default {
   breadcumbs: {
     config: 'settings',
     categories: 'Categories',
+    redeem_codes: 'Redeem Codes',
   },
   categories: {
     head: 'Categories',
@@ -74,6 +79,19 @@ export default {
       color: 'Color',
       sub_categories_count: 'Children Categories',
       status: 'Status',
+      actions: 'Actions',
+    },
+  },
+  redeem_codes: {
+    head: 'Redemption Code',
+    delete_dialog_title: 'Do you want to delete the selected code?',
+    delete_dialog_info: 'This action is irreversible.',
+    code: 'Code',
+    new: 'New Code',
+    headers: {
+      code: 'Code',
+      user: 'User',
+      status: 'Situation',
       actions: 'Actions',
     },
   },
