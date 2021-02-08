@@ -112,6 +112,36 @@
             </v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
+
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title>
+              {{ $t('categories.image') }}
+            </v-list-item-title>
+            <v-list-item-subtitle>
+              <v-file-input
+                ref="fileInputRef"
+                truncate-length="25"
+                :label="$t('categories.image_label')"
+                outlined
+                dense
+                solo
+                @change="changeFileInput"
+              ></v-file-input>
+            </v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item v-if="category.image !== null">
+          <v-list-item-content>
+            <v-list-item-title>
+              {{ $t('categories.current_image') }}
+            </v-list-item-title>
+            <v-list-item-subtitle>
+              <a :href="category.image" target="_blank">{{ category.image }}</a>
+            </v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
       <v-divider></v-divider>
       <v-card-actions>
@@ -138,6 +168,7 @@ export default {
   name: 'CategoryDialog',
   data: () => ({
     show: false,
+    dataForm: new FormData(),
     category: {
       id: null,
       name: {
@@ -146,6 +177,7 @@ export default {
       },
       color: 'red',
       category_id: null,
+      image: null,
     },
     colors: [],
     categories: [],
@@ -194,16 +226,22 @@ export default {
         },
         color: 'red',
         category_id: null,
+        image: null,
       }
+    },
+    changeFileInput(file) {
+      this.dataForm.append('file', file)
     },
     async store() {
       this.$nuxt.$emit('loader-true')
+      this.dataForm.append('category_id', this.category.category_id)
+      this.dataForm.append('color', this.category.color)
+      this.dataForm.append('name', JSON.stringify(this.category.name))
       await this.$axios
-        .post(`/admin/categories`, {
-          ...this.category,
-          name: JSON.stringify(this.category.name),
-        })
+        .post(`/admin/categories`, this.dataForm)
         .then((response) => {
+          this.$refs.fileInputRef.value = null
+          this.dataForm = new FormData()
           this.hideDialog()
           this.$nuxt.$emit('text-toasty', {
             color: 'success',
@@ -223,12 +261,17 @@ export default {
     },
     async update() {
       this.$nuxt.$emit('loader-true')
+      this.dataForm.append('id', this.category.id)
+      if (this.category.category_id) {
+        this.dataForm.append('category_id', this.category.category_id)
+      }
+      this.dataForm.append('color', this.category.color)
+      this.dataForm.append('name', JSON.stringify(this.category.name))
       await this.$axios
-        .put(`/admin/categories/${this.category.id}`, {
-          ...this.category,
-          name: JSON.stringify(this.category.name),
-        })
+        .post(`/admin/categories/${this.category.id}`, this.dataForm)
         .then((response) => {
+          this.$refs.fileInputRef.value = null
+          this.dataForm = new FormData()
           this.hideDialog()
           this.$nuxt.$emit('text-toasty', {
             color: 'success',

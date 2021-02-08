@@ -130,11 +130,11 @@ export default {
   },
   methods: {
     async login() {
-      text: this.$t('data_not_filled'),
+      this.$nuxt.$emit('loader-true')
 
       if (!this.isFilled) {
         this.$nuxt.$emit('text-toasty', {
-          text: this.$t('auth.data_not_filled'),
+          text: this.$t('data_not_filled'),
         })
         this.$nuxt.$emit('loader-false')
         return false
