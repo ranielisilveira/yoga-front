@@ -29,3 +29,13 @@
 .v-alert.v-alert--dense  {
   margin-bottom: 0px !important;
 }
+
+.top-menu-image {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.pointer{
+  cursor: pointer;
+}

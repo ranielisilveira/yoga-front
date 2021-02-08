@@ -150,9 +150,7 @@ export default {
         .then(() => {
           this.$auth.is_admin
             ? this.$router.push({ path: `/admin` })
-            : this.$router.push({
-                path: `/categories/${this.$auth.user.category_home}`,
-              })
+            : this.$router.push({ path: `/home` })
         })
         .catch((error) => {
           this.$nuxt.$emit('loader-false')

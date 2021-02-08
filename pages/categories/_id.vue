@@ -1,12 +1,9 @@
-@@ -0,0 +1,155 @@
 <template>
   <div>
-    <v-row v-if="category.id" class="ma-0 pa-0 pt-2">
+    <v-row v-if="category.id" class="ma-0 pa-0">
       <v-col
-        v-if="$vuetify.breakpoint.mdAndUp"
-        :sm="12"
-        :md="10"
-        class="mx-auto pa-15"
+        class="mx-auto pa-15 top-menu-image"
+        :style="`background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url(${category.image}) no-repeat center center ;`"
       >
         <v-subheader :class="`${subheaderColor}`">
           {{ category.name[$i18n.locale] }}

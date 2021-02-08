@@ -1,8 +1,17 @@
 <template>
   <div>
-    <v-row>
-      <v-col :sm="12" :md="4" :lg="3" class="pa-10">
-        {{ $t('welcome') }}
+    <v-row class="ma-0 pa-0">
+      <v-col
+        v-for="category in categories"
+        :key="category.id"
+        cols="12"
+        class="mx-auto pa-8 top-menu-image pointer"
+        :style="`background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url(${category.image}) no-repeat center center ;`"
+        @click="goTo(`/categories/${category.id}`)"
+      >
+        <v-subheader :class="subheaderColor(category.color)">
+          {{ category.name[$i18n.locale] }}
+        </v-subheader>
       </v-col>
     </v-row>
   </div>
@@ -10,14 +19,48 @@
 
 <script>
 export default {
-  data: () => ({}),
+  data: () => ({
+    categories: [],
+  }),
+  async fetch() {
+    this.$nuxt.$emit('loader-true')
+    await this.$axios
+      .get(`/menu/top`)
+      .then((response) => {
+        this.categories = response.data
+        this.$nuxt.$emit('loader-false')
+      })
+      .catch((error) => {
+        this.$nuxt.$emit('loader-false')
+        this.$nuxt.$emit('toasty', {
+          color: 'danger',
+          text: error.response.data,
+        })
+      })
+  },
   head() {
     return {
       title: 'Home',
     }
   },
-  computed: {},
-  created() {},
-  methods: {},
+  methods: {
+    goTo(route) {
+      this.$router.push({ path: route })
+    },
+    subheaderColor(color) {
+      return color.includes(' ')
+        ? color.replace(' ', '--text ')
+        : color + '--text '
+    },
+  },
 }
 </script>
+<style scoped>
+/deep/ .v-subheader {
+  font-size: 1.7rem !important;
+  display: inline-block !important;
+  text-align: center !important;
+  margin: 0 auto;
+  width: 100%;
+}
+</style>
