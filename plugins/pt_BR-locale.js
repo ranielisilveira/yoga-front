@@ -32,9 +32,9 @@ export default {
     config_desc: 'configurações do aplicativo',
     categories: 'Categorias',
     redeem_codes: 'Códigos de Resgate',
+    content: 'Conteúdos',
+    content_desc: 'vídeos, livros e textos',
     media: 'Mídia',
-    media_desc: 'vídeos, livros e textos',
-    videos: 'Vídeos',
     about: 'Página Sobre',
   },
   auth: {

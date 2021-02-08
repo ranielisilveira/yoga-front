@@ -189,15 +189,15 @@ export default {
         {
           icon: 'mdi-chevron-up',
           'icon-alt': 'mdi-chevron-down',
-          title: this.$t('admin_menu.media'),
-          subtitle: this.$t('admin_menu.media_desc'),
+          title: this.$t('admin_menu.content'),
+          subtitle: this.$t('admin_menu.content_desc'),
           model: false,
           route: false,
           children: [
             {
               icon: 'mdi-info',
-              title: this.$t('admin_menu.videos'),
-              route: '/admin/videos',
+              title: this.$t('admin_menu.media'),
+              route: '/admin/media',
             },
             {
               icon: 'mdi-info',
