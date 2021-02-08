@@ -150,4 +150,8 @@ export default {
 /deep/ .v-tabs-bar {
   height: 90px !important;
 }
+/deep/ .v-slide-group__prev .v-icon,
+/deep/ .v-slide-group__next .v-icon {
+  font-size: 40px !important;
+}
 </style>
