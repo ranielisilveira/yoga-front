@@ -210,6 +210,7 @@ export default {
             text: response.data.message,
           })
           this.$nuxt.$emit('loader-false')
+          this.$fetch()
           this.$emit('refresh')
         })
         .catch((error) => {
@@ -234,6 +235,7 @@ export default {
             text: response.data.message,
           })
           this.$nuxt.$emit('loader-false')
+          this.$fetch()
           this.$emit('refresh')
         })
         .catch((error) => {
