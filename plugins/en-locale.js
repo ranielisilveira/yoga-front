@@ -58,6 +58,12 @@ export default {
     create_account: 'Create Account',
     register_desc: 'Enter your email and choose an password.',
     redeem_code: 'Redemption Code',
+    profile_update: 'Update Profile',
+    profile_desc: 'Update Name or Language',
+    profile_desc_2: 'Update Password',
+    current_password: 'Current Password',
+    update_data: 'Update Data',
+    update_password: 'Update Password',
   },
   breadcumbs: {
     config: 'settings',

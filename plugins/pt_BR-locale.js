@@ -58,6 +58,12 @@ export default {
     create_account: 'Criar conta',
     register_desc: 'Digite seu email e escolha uma senha.',
     redeem_code: 'Código de Resgate',
+    profile_update: 'Atualizar perfil',
+    profile_desc: 'Atualizar nome ou idioma',
+    profile_desc_2: 'Atualizar senha',
+    current_password: 'Senha atual',
+    update_data: 'Atualizar Dados',
+    update_password: 'Atualizar Senha',
   },
   breadcumbs: {
     config: 'configurações',
