@@ -130,7 +130,7 @@ export default {
   },
   methods: {
     async login() {
-      this.$nuxt.$emit('loader-true')
+      text: this.$t('data_not_filled'),
 
       if (!this.isFilled) {
         this.$nuxt.$emit('text-toasty', {
