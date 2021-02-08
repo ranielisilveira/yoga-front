@@ -89,8 +89,10 @@ export default {
     head: 'Redemption Code',
     delete_dialog_title: 'Do you want to delete the selected code?',
     delete_dialog_info: 'This action is irreversible.',
-    code: 'Code',
+    code: 'Unique Code',
     new: 'New Code',
+    import: 'or Import a list',
+    import_desc: 'import list .csv',
     headers: {
       code: 'Code',
       user: 'User',

@@ -87,8 +87,10 @@ export default {
     head: 'Código de Resgate',
     delete_dialog_title: 'Deseja excluir o código selecionado?',
     delete_dialog_info: 'Esta ação é irreversível.',
-    code: 'Código',
+    code: 'Código Único',
     new: 'Novo Código',
+    import: 'ou Importar uma lista',
+    import_desc: 'Importar lista .csv',
     headers: {
       code: 'Código',
       user: 'Usuário',

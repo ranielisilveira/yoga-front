@@ -59,6 +59,24 @@
             </v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title>
+              {{ $t('redeem_codes.import') }}
+            </v-list-item-title>
+            <v-list-item-subtitle>
+              <v-file-input
+                ref="fileInputRef"
+                truncate-length="25"
+                :label="$t('redeem_codes.import_desc')"
+                outlined
+                dense
+                solo
+                @change="changeFileInput"
+              ></v-file-input>
+            </v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
       <v-divider></v-divider>
       <v-card-actions>
@@ -80,6 +98,7 @@
 export default {
   name: 'RedeemCodeDialog',
   data: () => ({
+    dataForm: new FormData(),
     show: false,
     redeem_code: {
       id: null,
@@ -102,7 +121,36 @@ export default {
         })
       })
   },
+    mounted() {
+    this.dataForm = new FormData()
+  },
   methods: {
+    async changeFileInput(file) {
+      // eslint-disable-next-line
+      if (file) {
+        this.dataForm.append('file', file)
+        this.$nuxt.$emit('loader-true')
+        await this.$axios
+          .post(`/admin/redeem-codes/import`, this.dataForm)
+          .then((response) => {
+            this.$refs.fileInputRef.value = null
+            this.$nuxt.$emit('text-toasty', {
+              color: 'success',
+              text: response.data.message,
+            })
+            this.$emit('refresh')
+            this.show = false
+            this.$nuxt.$emit('loader-false')
+          })
+          .catch((error) => {
+            this.$nuxt.$emit('loader-false')
+            this.$nuxt.$emit('toasty', {
+              color: 'danger',
+              text: error.response.data,
+            })
+          })
+      }
+    },
     showDialog(item) {
       this.show = true
       this.redeem_code = item
