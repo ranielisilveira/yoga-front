@@ -36,13 +36,15 @@
               </template>
 
               <template #[`item.category`]="{ item }">
-                {{
-                  item.category.category
-                    ? item.category.category.name[$i18n.locale] + ' > '
-                    : ''
-                }}
-                {{ item.category.name[$i18n.locale] }}
-              </template>
+ <span v-if="item.category">
+                  {{
+                    item.category.category
+                      ? item.category.category.name[$i18n.locale] + ' > '
+                      : ''
+                  }}
+                  {{ item.category.name[$i18n.locale] }}
+                </span>
+                <span v-else> Categoria não encontrada </span>              </template>
 
               <template #[`item.media`]="{ item }">
                 <a
