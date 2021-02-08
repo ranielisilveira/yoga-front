@@ -85,7 +85,7 @@
         </template>
 
         <v-list>
-          <v-list-item nuxt to="/profile">
+          <v-list-item nuxt to="/admin/profile">
             <v-list-item-title>
               <v-icon>mdi-pencil</v-icon>
               {{ $t('profile') }}
