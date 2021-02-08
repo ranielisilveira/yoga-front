@@ -24,6 +24,15 @@
             v-model="email"
             :label="$t('auth.your_email')"
             name="email"
+            type="email"
+            solo-inverted
+            flat
+          />
+
+          <v-text-field
+            v-model="code"
+            :label="$t('auth.redeem_code')"
+            name="code"
             type="text"
             solo-inverted
             flat
@@ -101,6 +110,7 @@ export default {
     email: null,
     password: null,
     password_confirmation: null,
+    code: null,
     language: 'en',
   }),
   head() {
@@ -114,6 +124,7 @@ export default {
         this.email &&
         this.password &&
         this.password_confirmation &&
+        this.code &&
         this.password === this.password_confirmation
       )
     },
@@ -141,6 +152,7 @@ export default {
         .post('/register', {
           name: this.name,
           email: this.email,
+          code: this.code,
           password: this.password,
           password_confirmation: this.password_confirmation,
           language: this.$i18n.locale,

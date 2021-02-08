@@ -57,6 +57,7 @@ export default {
     logout_success: 'Você foi deslogado com sucesso.',
     create_account: 'Criar conta',
     register_desc: 'Digite seu email e escolha uma senha.',
+    redeem_code: 'Código de Resgate',
   },
   breadcumbs: {
     config: 'configurações',

@@ -57,6 +57,7 @@ export default {
     logout_success: 'You have been successfully logged out.',
     create_account: 'Create Account',
     register_desc: 'Enter your email and choose an password.',
+    redeem_code: 'Redemption Code',
   },
   breadcumbs: {
     config: 'settings',
