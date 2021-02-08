@@ -7,71 +7,30 @@
       app
     >
       <v-list dense>
-        <template v-for="item in menu">
-          <v-row v-if="item.heading" :key="item.heading" align="center">
-            <v-col cols="12">
-              <v-subheader v-if="item.heading">
-                {{ item.heading }}
-              </v-subheader>
-            </v-col>
-          </v-row>
-          <v-list-group
-            v-else-if="item.children"
-            :key="item.title"
-            v-model="item.model"
-            :prepend-icon="item.model ? item.icon : item['icon-alt']"
-            append-icon=""
-          >
-            <template #activator>
-              <v-list-item-content>
-                <v-list-item-title>
-                  {{ item.title }}
-                </v-list-item-title>
-              </v-list-item-content>
-            </template>
-            <v-list-item
-              v-for="(child, i) in item.children"
-              :key="i"
-              link
-              :to="child.route"
-            >
-              <v-list-item-action v-if="child.icon">
-                <v-icon>{{ child.icon }}</v-icon>
-              </v-list-item-action>
-              <v-list-item-content>
-                <v-list-item-title>
-                  {{ child.title }}
-                </v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list-group>
-          <v-list-item v-else :key="item.title" link :to="item.route">
-            <v-list-item-action>
-              <v-icon>{{ item.icon }}</v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>
-                {{ item.title }}
-              </v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </template>
+        <v-list-item
+          v-for="(item, i) in menu"
+          :key="i"
+          link
+          :to="`/categories/${item.id}`"
+          :color="item.color"
+        >
+          <v-list-item-content>
+            <v-list-item-title>
+              {{ item.name[$i18n.locale] }}
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar
-      :clipped-left="$vuetify.breakpoint.lgAndUp"
-      app
-      color="purple darken-2"
-      dark
-    >
+    <v-app-bar :clipped-left="$vuetify.breakpoint.lgAndUp" app>
       <v-app-bar-nav-icon
         v-if="$vuetify.breakpoint.smAndDown"
         @click.stop="drawer = !drawer"
       />
       <v-toolbar-title style="width: 150px" class="ml-0 p-1">
         <NuxtLink to="/home">
-          <v-img contain :src="require('./../static/logo-light.png')"></v-img>
+          <v-img contain :src="require('./../static/logo.png')"></v-img>
         </NuxtLink>
       </v-toolbar-title>
       <v-spacer />
@@ -105,9 +64,8 @@
     <v-main>
       <top-menu :items="menu"></top-menu>
 
-      <v-container fluid>
-        <nuxt></nuxt>
-      </v-container>
+      <nuxt></nuxt>
+      <v-container fluid></v-container>
     </v-main>
     <v-snackbar
       v-model="snackbar.show"
@@ -140,10 +98,7 @@
 
 <script>
 import map from 'lodash/map'
-import TopMenu from '../components/TopMenu'
-import LangSwitcher from '../components/LangSwitcher'
 export default {
-  components: { TopMenu, LangSwitcher },
   middleware: ['auth', 'user'],
   data: () => ({
     loader: true,
@@ -162,24 +117,24 @@ export default {
       color: undefined,
       text: 'Ocorreu um erro',
     },
-    menu: [
-      {
-        icon: 'mdi-chevron-up',
-        'icon-alt': 'mdi-chevron-down',
-        title: 'Configurações',
-        subtitle: 'Controle de Items',
-        model: false,
-        route: false,
-        children: [
-          {
-            icon: 'mdi-plus',
-            title: 'Nome do Menu',
-            route: '/route',
-          },
-        ],
-      },
-    ],
+    menu: {},
   }),
+  async fetch() {
+    this.$nuxt.$emit('loader-true')
+    await this.$axios
+      .get(`/menu/top`)
+      .then((response) => {
+        this.menu = response.data
+        this.$nuxt.$emit('loader-false')
+      })
+      .catch((error) => {
+        this.$nuxt.$emit('loader-false')
+        this.$nuxt.$emit('toasty', {
+          color: 'danger',
+          text: error.response.data,
+        })
+      })
+  },
   created() {
     if (!this.$auth.loggedIn) {
       this.$auth.logout()

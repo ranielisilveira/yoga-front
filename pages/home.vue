@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-row>
-      <v-col :sm="12" :md="4" :lg="3">
+      <v-col :sm="12" :md="4" :lg="3" class="pa-10">
         {{ $t('welcome') }}
       </v-col>
     </v-row>
