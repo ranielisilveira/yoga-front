@@ -121,7 +121,7 @@ export default {
         })
       })
   },
-    mounted() {
+  mounted() {
     this.dataForm = new FormData()
   },
   methods: {

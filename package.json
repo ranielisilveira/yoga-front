@@ -25,6 +25,7 @@
     "@nuxtjs/style-resources": "^1.0.0",
     "core-js": "^3.8.2",
     "material-design-icons-iconfont": "^6.1.0",
+    "mobile-device-detect": "^0.4.3",
     "nuxt": "^2.14.12",
     "nuxt-i18n": "^6.18.0"
   },

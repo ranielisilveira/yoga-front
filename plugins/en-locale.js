@@ -26,7 +26,9 @@ export default {
   inactive: 'Inactive',
   taken: 'Taken',
   available: 'Available',
-
+  close: 'Close',
+  pwa_ios:
+    'To install with an App click on the icon in the navigation bar below and then "Add to homepage"',
   admin_menu: {
     config: 'Settings',
     config_desc: 'Application settings',
@@ -142,3 +144,4 @@ export default {
       code: 'Code',
     },
   },
+}

@@ -26,7 +26,9 @@ export default {
   inactive: 'Inativo',
   taken: 'Usado',
   available: 'Disponível',
-
+  close: 'Fechar',
+  pwa_ios:
+    'Para instalar com um App clique no icone na barra de navegação abaixo e em seguida "Adicionar à página inicial"',
   admin_menu: {
     config: 'Configurações',
     config_desc: 'configurações do aplicativo',
@@ -144,3 +146,4 @@ export default {
       code: 'Code',
     },
   },
+}

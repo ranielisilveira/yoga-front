@@ -76,16 +76,35 @@
           >{{ $t('auth.enter') }}
         </v-btn>
       </v-card-actions>
-
       <v-divider class="mt-4 mb-4"></v-divider>
       <v-btn block nuxt text color="purple darken-2" to="/register">{{
         $t('auth.create_account')
       }}</v-btn>
+
+      <v-bottom-sheet v-model="sheet">
+        <v-sheet class="text-center pt-4" height="150px">
+          <v-row>
+            <v-col>
+              <div class="pa-3">
+                {{ $t('pwa_ios') }}
+              </div>
+            </v-col>
+            <v-col cols="3" class="mt-3">
+              <v-icon class="text-lg">mdi-export-variant</v-icon>
+            </v-col>
+          </v-row>
+          <v-btn text color="purple" @click="sheet = !sheet">
+            {{ $t('close') }}
+          </v-btn>
+        </v-sheet>
+      </v-bottom-sheet>
     </v-card>
   </div>
 </template>
 
 <script>
+import { isIOS } from 'mobile-device-detect'
+
 export default {
   layout: 'guest',
   data: () => ({
@@ -93,6 +112,7 @@ export default {
     email: null,
     password: null,
     confirm: null,
+    sheet: isIOS,
   }),
   head() {
     return {
@@ -145,3 +165,8 @@ export default {
   },
 }
 </script>
+<style>
+.text-lg {
+  font-size: 45px !important;
+}
+</style>
