@@ -184,6 +184,11 @@ export default {
               title: this.$t('admin_menu.redeem_codes'),
               route: '/admin/redeem-codes',
             },
+            {
+              icon: 'mdi-info',
+              title: this.$t('admin_menu.users'),
+              route: '/admin/users',
+            },
           ],
         },
         {

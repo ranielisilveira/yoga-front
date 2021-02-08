@@ -81,7 +81,11 @@ export default {
     new: 'New Category',
     name: 'Category Name',
     color: 'Category Color (used by menus)',
+    image: 'Image',
+    current_image: 'Current Image',
+    image_label: 'Select a image: png, jpeg ou gif',
     headers: {
+      order: 'Order',
       name: 'Name',
       parent_category_name: 'Parent Category',
       media: 'Media',
@@ -106,7 +110,7 @@ export default {
       actions: 'Actions',
     },
   },
-    medias: {
+  medias: {
     head: 'Contents',
     delete_dialog_title: 'Do you want to remove the Selected Media?',
     delete_dialog_info: 'The related features will be disabled.',
@@ -130,4 +134,11 @@ export default {
       actions: 'Actions',
     },
   },
-}
+  users: {
+    headers: {
+      name: 'Name',
+      email: 'Email',
+      is_active: 'Account Status',
+      code: 'Code',
+    },
+  },
