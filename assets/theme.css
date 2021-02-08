@@ -39,3 +39,11 @@
 .pointer{
   cursor: pointer;
 }
+.black--text .v-tab.v-tab--active,
+.black--text .v-tabs-slider-wrapper{
+  color: rgba(0,0,0,.87) !important;
+}
+.white--text .v-tabs-slider-wrapper,
+.white--text .v-tab.v-tab--active{
+  color: rgba(255,255,255,.87) !important;
+}

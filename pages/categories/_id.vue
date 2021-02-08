@@ -14,7 +14,6 @@
         <v-tabs
           v-model="tab"
           :background-color="category.color"
-          dark
           show-arrows
           grow
         >
