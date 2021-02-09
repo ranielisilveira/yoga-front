@@ -116,6 +116,26 @@
         <v-list-item>
           <v-list-item-content>
             <v-list-item-title>
+              {{ $t('categories.headers.order') }}
+            </v-list-item-title>
+            <v-list-item-subtitle class="pt-3">
+              <v-text-field
+                v-model="category.order"
+                :label="$t('categories.headers.order')"
+                outlined
+                dense
+                hide-details="true"
+                autofocus
+                class="mb-2"
+                type="number"
+              ></v-text-field>
+            </v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title>
               {{ $t('categories.image') }}
             </v-list-item-title>
             <v-list-item-subtitle>
@@ -176,6 +196,7 @@ export default {
         pt: null,
       },
       color: 'red',
+      order: null,
       category_id: null,
       image: null,
     },
@@ -225,6 +246,7 @@ export default {
           pt: null,
         },
         color: 'red',
+        order: null,
         category_id: null,
         image: null,
       }
@@ -236,6 +258,7 @@ export default {
       this.$nuxt.$emit('loader-true')
       this.dataForm.append('category_id', this.category.category_id)
       this.dataForm.append('color', this.category.color)
+      this.dataForm.append('color', this.category.order)
       this.dataForm.append('name', JSON.stringify(this.category.name))
       await this.$axios
         .post(`/admin/categories`, this.dataForm)
@@ -266,6 +289,7 @@ export default {
         this.dataForm.append('category_id', this.category.category_id)
       }
       this.dataForm.append('color', this.category.color)
+      this.dataForm.append('color', this.category.order)
       this.dataForm.append('name', JSON.stringify(this.category.name))
       await this.$axios
         .post(`/admin/categories/${this.category.id}`, this.dataForm)

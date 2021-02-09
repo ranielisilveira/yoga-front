@@ -30,7 +30,40 @@
             v-for="subcategory in category.categories"
             :key="subcategory.id"
           >
-            <v-card v-for="media in subcategory.medias" :key="media.id" flat>
+<v-expansion-panels v-if="subcategory.categories.length" accordion>
+              <v-expansion-panel
+                v-for="subcategory2nd in subcategory.categories"
+                :key="subcategory2nd.id"
+              >
+                <v-expansion-panel-header>
+                  {{ subcategory2nd.name[$i18n.locale] }}
+                </v-expansion-panel-header>
+                <v-expansion-panel-content
+                  v-for="media2nd in subcategory2nd.medias"
+                  :key="media2nd.id"
+                >
+                  <client-only v-if="media2nd.type === 1">
+                    <vimeo-player
+                      ref="player"
+                      :player-width="screenW"
+                      :player-height="
+                        $vuetify.breakpoint.smAndDown ? screenH / 3 : '500'
+                      "
+                      :video-id="media2nd.media[$i18n.locale]"
+                    />
+                  </client-only>
+                  <p v-else class="py-10 px-5 text-justify">
+                    {{ media2nd.media[$i18n.locale] }}
+                  </p>
+                </v-expansion-panel-content>
+              </v-expansion-panel>
+            </v-expansion-panels>
+            <v-card
+              v-for="media in subcategory.medias"
+              v-else
+              :key="media.id"
+              flat
+            >
               <client-only v-if="media.type === 1">
                 <vimeo-player
                   ref="player"

@@ -44,6 +44,22 @@
                 </span>
               </template>
 
+              <template #[`item.order`]="{ item }">
+                <v-text-field
+                  :key="item.id"
+                  v-model="item.order"
+                  style="width: 80px"
+                  hide-details
+                  class="my-2"
+                  type="number"
+                  min="1"
+                  dense
+                  outlined
+                  solo-inverted
+                  @input="updateOrder(item)"
+                ></v-text-field>
+              </template>
+
               <template #[`item.name`]="{ item }">
                 {{ item.name[$i18n.locale] }}
               </template>
@@ -220,6 +236,12 @@ export default {
     headers() {
       return [
         {
+          text: this.$t('categories.headers.order'),
+          sortable: false,
+          value: 'order',
+          class: 'blue-grey white--text',
+        },
+        {
           text: this.$t('categories.headers.color'),
           sortable: false,
           value: 'color',
@@ -267,6 +289,26 @@ export default {
     },
   },
   methods: {
+    updateOrder: debounce(async function (item) {
+      this.$nuxt.$emit('loader-true')
+      await this.$axios
+        .put(`/admin/categories/${item.id}/sort`, item)
+        .then((response) => {
+          this.$nuxt.$emit('text-toasty', {
+            color: 'success',
+            text: response.data.message,
+          })
+          this.$nuxt.$emit('loader-false')
+          this.$fetch()
+        })
+        .catch((error) => {
+          this.$nuxt.$emit('loader-false')
+          this.$nuxt.$emit('toasty', {
+            color: 'danger',
+            text: error.response.data,
+          })
+        })
+    }, 500),
     doSearch: debounce(function () {
       if (this.search.length > 2 || this.search.length === 0) {
         this.categories.current_page = 1
