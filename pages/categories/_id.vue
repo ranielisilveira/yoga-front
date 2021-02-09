@@ -15,7 +15,8 @@
           v-model="tab"
           :background-color="category.color"
           show-arrows
-          grow
+          fixed-tabs
+          centered
         >
           <v-tab
             v-for="subcategory in category.categories"
@@ -173,14 +174,6 @@ export default {
   text-align: center !important;
   margin: 0 auto;
   width: 100%;
-}
-/deep/ .v-tab {
-  padding: 0 40px 0 40px !important;
-  /* word-spacing: 100vw;
-  line-height: 15px; */
-}
-/deep/ .v-tabs-bar {
-  height: 90px !important;
 }
 /deep/ .v-slide-group__prev .v-icon,
 /deep/ .v-slide-group__next .v-icon {

@@ -258,7 +258,7 @@ export default {
       this.$nuxt.$emit('loader-true')
       this.dataForm.append('category_id', this.category.category_id)
       this.dataForm.append('color', this.category.color)
-      this.dataForm.append('color', this.category.order)
+      this.dataForm.append('order', this.category.order)
       this.dataForm.append('name', JSON.stringify(this.category.name))
       await this.$axios
         .post(`/admin/categories`, this.dataForm)
@@ -289,7 +289,7 @@ export default {
         this.dataForm.append('category_id', this.category.category_id)
       }
       this.dataForm.append('color', this.category.color)
-      this.dataForm.append('color', this.category.order)
+      this.dataForm.append('order', this.category.order)
       this.dataForm.append('name', JSON.stringify(this.category.name))
       await this.$axios
         .post(`/admin/categories/${this.category.id}`, this.dataForm)
