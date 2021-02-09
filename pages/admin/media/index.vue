@@ -36,7 +36,13 @@
               </template>
 
               <template #[`item.category`]="{ item }">
- <span v-if="item.category">
+                <span v-if="item.category">
+                  {{
+                    item.category.category.category
+                      ? item.category.category.category.name[$i18n.locale] +
+                        ' > '
+                      : ''
+                  }}
                   {{
                     item.category.category
                       ? item.category.category.name[$i18n.locale] + ' > '

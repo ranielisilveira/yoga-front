@@ -62,10 +62,18 @@
 
               <template #[`item.name`]="{ item }">
                 {{ item.name[$i18n.locale] }}
-              </template>
-
-              <template #[`item.category_name`]="{ item }">
-                {{ item.category ? item.category.name[$i18n.locale] : '-' }}
+                <span v-if="item.category">
+                  {{
+                    item.category.category
+                      ? item.category.category.name[$i18n.locale] + ' > '
+                      : ''
+                  }}
+                  {{
+                    item.category
+                      ? item.category.name[$i18n.locale] + ' > '
+                      : ''
+                  }}
+                </span>
               </template>
 
               <template #[`item.color`]="{ item }">
@@ -255,16 +263,9 @@ export default {
           class: 'blue-grey white--text',
         },
         {
-          text: this.$t('categories.headers.parent_category_name'),
-          align: 'start',
-          sortable: false,
-          value: 'category_name',
-          class: 'blue-grey white--text',
-        },
-        {
           text: this.$t('categories.headers.media'),
           sortable: false,
-          value: 'media_count',
+          value: 'medias_count',
           class: 'blue-grey white--text',
         },
         {
