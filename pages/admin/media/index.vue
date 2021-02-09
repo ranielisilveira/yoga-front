@@ -50,7 +50,8 @@
                   }}
                   {{ item.category.name[$i18n.locale] }}
                 </span>
-                <span v-else> Categoria não encontrada </span>              </template>
+                <span v-else> Categoria não encontrada </span>
+              </template>
 
               <template #[`item.media`]="{ item }">
                 <a

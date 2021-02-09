@@ -9,7 +9,7 @@
         :style="`background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url(${category.image}) no-repeat center center ;`"
         @click="goTo(`/categories/${category.id}`)"
       >
-        <v-subheader :class="subheaderColor(category.color)">
+        <v-subheader>
           {{ category.name[$i18n.locale] }}
         </v-subheader>
       </v-col>
@@ -46,11 +46,6 @@ export default {
   methods: {
     goTo(route) {
       this.$router.push({ path: route })
-    },
-    subheaderColor(color) {
-      return color.includes(' ')
-        ? color.replace(' ', '--text ')
-        : color + '--text '
     },
   },
 }

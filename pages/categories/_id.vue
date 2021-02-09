@@ -5,12 +5,12 @@
         class="mx-auto pa-15 top-menu-image"
         :style="`background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url(${category.image}) no-repeat center center ;`"
       >
-        <v-subheader :class="`${subheaderColor}`">
+        <v-subheader>
           {{ category.name[$i18n.locale] }}
         </v-subheader>
       </v-col>
 
-      <v-col cols="12" class="ma-0 pa-0 text-center">
+      <v-col cols="12" class="video-body ma-0 pa-0 text-center">
         <v-tabs
           v-model="tab"
           :background-color="category.color"
@@ -31,7 +31,7 @@
             v-for="subcategory in category.categories"
             :key="subcategory.id"
           >
-<v-expansion-panels v-if="subcategory.categories.length" accordion>
+            <v-expansion-panels v-if="subcategory.categories.length" accordion>
               <v-expansion-panel
                 v-for="subcategory2nd in subcategory.categories"
                 :key="subcategory2nd.id"
@@ -43,17 +43,19 @@
                   v-for="media2nd in subcategory2nd.medias"
                   :key="media2nd.id"
                 >
-                  <client-only v-if="media2nd.type === 1">
-                    <vimeo-player
-                      ref="player"
-                      :player-width="screenW"
-                      :player-height="
-                        $vuetify.breakpoint.smAndDown ? screenH / 3 : '500'
-                      "
-                      :video-id="media2nd.media[$i18n.locale]"
-                    />
-                  </client-only>
-                  <p v-else class="py-10 px-5 text-justify">
+                  <iframe
+                    v-if="media2nd.type === 1"
+                    :src="`https://player.vimeo.com/video/${
+                      media2nd.media[$i18n.locale]
+                    }`"
+                    allowfullscreen
+                    :width="$vuetify.breakpoint.mdAndUp ? '600' : screenW"
+                    :height="
+                      $vuetify.breakpoint.mdAndUp ? '336' : screenW * (56 / 100)
+                    "
+                    frameborder="0"
+                  />
+                  <p v-else class="py-10 px-15 text-justify">
                     {{ media2nd.media[$i18n.locale] }}
                   </p>
                 </v-expansion-panel-content>
@@ -65,17 +67,19 @@
               :key="media.id"
               flat
             >
-              <client-only v-if="media.type === 1">
-                <vimeo-player
-                  ref="player"
-                  :player-width="screenW"
-                  :player-height="
-                    $vuetify.breakpoint.smAndDown ? screenH / 3 : '500'
-                  "
-                  :video-id="media.media[$i18n.locale]"
-                />
-              </client-only>
-              <p v-else class="py-10 px-5 text-justify">
+              <iframe
+                v-if="media.type === 1"
+                :src="`https://player.vimeo.com/video/${
+                  media.media[$i18n.locale]
+                }`"
+                allowfullscreen
+                :width="$vuetify.breakpoint.mdAndUp ? '600' : screenW"
+                :height="
+                  $vuetify.breakpoint.mdAndUp ? '336' : screenW * (56 / 100)
+                "
+                frameborder="0"
+              />
+              <p v-else class="py-10 px-15 text-justify">
                 {{ media.media[$i18n.locale] }}
               </p>
             </v-card>
@@ -178,5 +182,9 @@ export default {
 /deep/ .v-slide-group__prev .v-icon,
 /deep/ .v-slide-group__next .v-icon {
   font-size: 40px !important;
+}
+/deep/ .v-expansion-panel-content__wrap {
+  background-color: #efefef;
+  padding: 0 !important;
 }
 </style>

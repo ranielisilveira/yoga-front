@@ -33,6 +33,7 @@
               v-for="(child, ic) in item.children"
               :key="ic"
               link
+              nuxt
               :to="child.route"
             >
               <v-list-item-title>{{ child.title }}</v-list-item-title>

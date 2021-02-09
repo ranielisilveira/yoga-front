@@ -6,7 +6,7 @@
         v-for="(menu, i) in items"
         :key="i"
         nuxt
-        :to="`/categories/${menu.id}`"
+        :to="`/${$i18n.locale}/categories/${menu.id}`"
         color="blue-grey lighten-4"
       >
         {{ menu.name[$i18n.locale] }}
