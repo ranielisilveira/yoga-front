@@ -6,7 +6,7 @@
         :key="category.id"
         cols="12"
         class="mx-auto pa-8 top-menu-image pointer"
-        :style="`background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url(${category.image}) no-repeat center center ;`"
+        :style="`background: url(${category.image}) no-repeat center center ;`"
         @click="goTo(`/categories/${category.id}`)"
       >
         <v-subheader>

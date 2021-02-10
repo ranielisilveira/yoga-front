@@ -3,7 +3,7 @@
     <v-row v-if="category.id" class="ma-0 pa-0">
       <v-col
         class="mx-auto pa-15 top-menu-image"
-        :style="`background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url(${category.image}) no-repeat center center ;`"
+        :style="`background: url(${category.image}) no-repeat center center ;`"
       >
         <v-subheader>
           {{ category.name[$i18n.locale] }}
