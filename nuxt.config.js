@@ -56,7 +56,18 @@ export default {
     // Doc: https://auth.nuxtjs.org/
     '@nuxtjs/auth',
     '@nuxtjs/style-resources',
-    ['nuxt-i18n', I18N],
+    [
+      'nuxt-i18n',
+      {
+        ...I18N,
+        defaultLocale: null,
+        strategy: 'prefix',
+        detectBrowserLanguage: {
+          useCookie: true,
+          alwaysRedirect: true,
+        },
+      },
+    ],
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

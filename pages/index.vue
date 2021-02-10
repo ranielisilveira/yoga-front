@@ -92,9 +92,10 @@
         text
         color="purple darken-2"
         :to="localePath('/register')"
-        >{{ $t('auth.create_account') }}</v-btn
+        >{{ $t('auth.create_account_btn') }}</v-btn
       >
 
+      {{ browser }}
       <v-bottom-sheet v-model="sheet">
         <v-sheet class="text-center pt-4" height="150px">
           <v-row>
@@ -122,6 +123,7 @@ import { isIOS } from 'mobile-device-detect'
 export default {
   layout: 'guest',
   data: () => ({
+    browser: process.browser.language,
     error: null,
     email: null,
     password: null,
