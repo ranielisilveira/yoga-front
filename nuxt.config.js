@@ -60,7 +60,7 @@ export default {
       'nuxt-i18n',
       {
         ...I18N,
-        defaultLocale: null,
+        defaultLocale: 'pt',
         strategy: 'prefix',
         detectBrowserLanguage: {
           useCookie: true,
