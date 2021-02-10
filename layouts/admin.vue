@@ -204,11 +204,6 @@ export default {
               title: this.$t('admin_menu.media'),
               route: '/admin/media',
             },
-            {
-              icon: 'mdi-info',
-              title: this.$t('admin_menu.about'),
-              route: '/admin/about',
-            },
           ],
         },
       ]

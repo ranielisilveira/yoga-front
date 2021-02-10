@@ -1,4 +1,3 @@
-@@ -0,0 +1,318 @@
 <template>
   <v-row class="mt-n5">
     <v-col :sm="12" :md="10" class="mx-auto">
@@ -7,7 +6,17 @@
         <v-row class="mb-0">
           <div class="col-12 my-0 py-0">
             <v-toolbar flat color="blue-grey darken-1" dark>
-              <v-spacer></v-spacer>
+              <v-text-field
+                v-model="search"
+                append-icon="search"
+                :label="$t('search_label')"
+                single-line
+                hide-details
+                solo-inverted
+                flat
+                @input="doSearch()"
+              ></v-text-field>
+
               <media-dialog ref="MediaDialogRef" @refresh="$fetch" />
             </v-toolbar>
           </div>
