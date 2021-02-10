@@ -57,7 +57,7 @@ export default {
     create_password: 'Create password',
     mail_token_error: 'The security code must be administered',
     logout_success: 'You have been successfully logged out.',
-    create_account: 'Create Account',
+    create_account: 'First time using the App? Register',
     register_desc: 'Enter your email and choose an password.',
     redeem_code: 'Redemption Code',
     profile_update: 'Update Profile',

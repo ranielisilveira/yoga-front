@@ -58,7 +58,7 @@ export default {
     create_password: 'Criar Senha',
     mail_token_error: 'O código de segurança deve ser informado',
     logout_success: 'Você foi deslogado com sucesso.',
-    create_account: 'Criar conta',
+    create_account: 'Primeira vez usando o App? Cadastre-se',
     register_desc: 'Digite seu email e escolha uma senha.',
     redeem_code: 'Código de Resgate',
     profile_update: 'Atualizar perfil',

@@ -23,7 +23,7 @@
         </v-form>
       </v-card-text>
       <v-card-actions>
-        <v-btn nuxt text color="purple darken-2" to="/">
+        <v-btn nuxt text color="purple darken-2" :to="localePath('/')">
           <v-icon>mdi-chevron-left</v-icon> {{ $t('auth.enter') }}
         </v-btn>
         <v-spacer />

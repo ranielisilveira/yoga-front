@@ -57,14 +57,23 @@
           @click="login"
           >{{ $t('auth.enter') }}
         </v-btn>
-        <v-btn block nuxt text color="blue lighten-2" to="/forgot-password">{{
-          $t('auth.forgot_password')
-        }}</v-btn>
+        <v-btn
+          block
+          nuxt
+          text
+          color="blue lighten-2"
+          :to="localePath('/forgot-password')"
+          >{{ $t('auth.forgot_password') }}</v-btn
+        >
       </v-sheet>
       <v-card-actions v-else class="text-center">
-        <v-btn nuxt text color="blue lighten-2" to="/forgot-password">{{
-          $t('auth.forgot_password')
-        }}</v-btn>
+        <v-btn
+          nuxt
+          text
+          color="blue lighten-2"
+          :to="localePath('/forgot-password')"
+          >{{ $t('auth.forgot_password') }}</v-btn
+        >
         <v-spacer />
         <v-btn
           depressed
@@ -77,9 +86,14 @@
         </v-btn>
       </v-card-actions>
       <v-divider class="mt-4 mb-4"></v-divider>
-      <v-btn block nuxt text color="purple darken-2" to="/register">{{
-        $t('auth.create_account')
-      }}</v-btn>
+      <v-btn
+        block
+        nuxt
+        text
+        color="purple darken-2"
+        :to="localePath('/register')"
+        >{{ $t('auth.create_account') }}</v-btn
+      >
 
       <v-bottom-sheet v-model="sheet">
         <v-sheet class="text-center pt-4" height="150px">

@@ -1,4 +1,3 @@
-@@ -0,0 +1,42 @@
 <template>
   <div>
     <v-tabs show-arrows grow>
@@ -6,7 +5,7 @@
         v-for="(menu, i) in items"
         :key="i"
         nuxt
-        :to="`/${$i18n.locale}/categories/${menu.id}`"
+        :to="localePath(`/categories/${menu.id}`)"
         color="blue-grey lighten-4"
       >
         {{ menu.name[$i18n.locale] }}

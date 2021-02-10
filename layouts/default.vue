@@ -11,7 +11,7 @@
           v-for="(item, i) in menu"
           :key="i"
           link
-          :to="`/categories/${item.id}`"
+          :to="localePath(`/categories/${item.id}`)"
           :color="item.color"
         >
           <v-list-item-content>
@@ -29,9 +29,9 @@
         @click.stop="drawer = !drawer"
       />
       <v-toolbar-title style="width: 150px" class="ml-0 p-1">
-        <a nuxt :to="`/home`">
+        <NuxtLink :to="localePath('/home')">
           <v-img contain :src="require('./../static/logo.png')"></v-img>
-        </a>
+        </NuxtLink>
       </v-toolbar-title>
       <v-spacer />
       <span class="hidden-sm-and-down">{{ $auth.user.name }}</span>
@@ -44,7 +44,7 @@
         </template>
 
         <v-list>
-          <v-list-item nuxt to="/profile">
+          <v-list-item nuxt :to="localePath('/profile')">
             <v-list-item-title>
               <v-icon>mdi-pencil</v-icon>
               {{ $t('profile') }}

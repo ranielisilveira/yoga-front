@@ -6,7 +6,7 @@
     <h1 v-else>
       {{ $t('error') }}
     </h1>
-    <NuxtLink to="/"> {{ $t('home_page') }} </NuxtLink>
+    <NuxtLink :to="localePath('/')"> {{ $t('home_page') }} </NuxtLink>
   </v-app>
 </template>
 

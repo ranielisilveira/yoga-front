@@ -34,7 +34,7 @@
               :key="ic"
               link
               nuxt
-              :to="child.route"
+              :to="localePath(child.route)"
             >
               <v-list-item-title>{{ child.title }}</v-list-item-title>
             </v-list-item>

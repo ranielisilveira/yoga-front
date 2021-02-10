@@ -49,14 +49,23 @@
         >
           {{ $t('auth.enter') }}
         </v-btn>
-        <v-btn block nuxt text color="purple darken-2" to="/forgot-password">{{
-          $t('auth.forgot_password')
-        }}</v-btn>
+        <v-btn
+          block
+          nuxt
+          text
+          color="purple darken-2"
+          :to="localePath('/forgot-password')"
+          >{{ $t('auth.forgot_password') }}</v-btn
+        >
       </v-sheet>
       <v-card-actions v-else class="text-center">
-        <v-btn nuxt text color="purple darken-2" to="/forgot-password">{{
-          $vuetify.lang.t('$vuetify.auth.forgot_password')
-        }}</v-btn>
+        <v-btn
+          nuxt
+          text
+          color="purple darken-2"
+          :to="localePath('/forgot-password')"
+          >{{ $t('auth.forgot_password') }}</v-btn
+        >
         <v-spacer />
         <v-btn
           depressed

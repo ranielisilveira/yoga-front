@@ -17,6 +17,7 @@ export default {
     },
   ],
   defaultLocale: 'pt',
+  strategy: 'prefix',
   vueI18n: {
     fallbackLocale: 'pt',
     messages: { en, pt },

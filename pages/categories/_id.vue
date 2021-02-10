@@ -219,7 +219,8 @@ export default {
 /deep/ .v-slide-group__next .v-icon {
   font-size: 40px !important;
 }
-/deep/ .v-expansion-panel-content__wrap {
+/deep/ .v-expansion-panel-content__wrap,
+/deep/ .v-card {
   background-color: #efefef;
   padding: 0 !important;
 }

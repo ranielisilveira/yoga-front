@@ -1,18 +1,18 @@
 <template>
   <div>
     <v-row class="ma-0 pa-0">
-      <v-col
+      <NuxtLink
         v-for="category in categories"
         :key="category.id"
-        cols="12"
-        class="mx-auto pa-8 top-menu-image pointer"
+        :to="localePath(`/categories/${category.id}`)"
+        class="mx-auto pa-8 top-menu-image pointer col col-12"
         :style="`background: url(${category.image}) no-repeat center center ;`"
         @click="goTo(`/categories/${category.id}`)"
       >
         <v-subheader>
           {{ category.name[$i18n.locale] }}
         </v-subheader>
-      </v-col>
+      </NuxtLink>
     </v-row>
   </div>
 </template>

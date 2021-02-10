@@ -33,7 +33,7 @@
               v-for="(child, i) in item.children"
               :key="i"
               link
-              :to="child.route"
+              :to="localePath(child.route)"
             >
               <v-list-item-action v-if="child.icon">
                 <v-icon>{{ child.icon }}</v-icon>
@@ -70,7 +70,7 @@
         @click.stop="drawer = !drawer"
       />
       <v-toolbar-title style="width: 150px" class="ml-0 p-1">
-        <NuxtLink to="/admin">
+        <NuxtLink :to="localePath('/admin')">
           <v-img contain :src="require('./../static/logo-light.png')"></v-img>
         </NuxtLink>
       </v-toolbar-title>
@@ -85,7 +85,7 @@
         </template>
 
         <v-list>
-          <v-list-item nuxt to="/admin/profile">
+          <v-list-item nuxt :to="localePath('/admin/profile')">
             <v-list-item-title>
               <v-icon>mdi-pencil</v-icon>
               {{ $t('profile') }}
