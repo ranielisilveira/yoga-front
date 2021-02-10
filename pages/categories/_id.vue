@@ -11,7 +11,33 @@
       </v-col>
 
       <v-col cols="12" class="video-body ma-0 pa-0 text-center">
+        <v-card v-if="$vuetify.breakpoint.smAndDown" tile>
+          <v-card-title :class="category.color">
+            <span class="title">{{ selectedCategory }}</span>
+            <v-spacer></v-spacer>
+            <v-menu bottom left>
+              <template #activator="{ on, attrs }">
+                <v-btn dark icon v-bind="attrs" v-on="on">
+                  <v-icon class="font-lg">mdi-arrow-down-drop-circle</v-icon>
+                </v-btn>
+              </template>
+
+              <v-list>
+                <v-list-item
+                  v-for="(subcategory, i) in category.categories"
+                  :key="subcategory.id"
+                  @click="selectCategory(subcategory, i)"
+                >
+                  <v-list-item-title>{{
+                    subcategory.name[$i18n.locale]
+                  }}</v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
+          </v-card-title>
+        </v-card>
         <v-tabs
+          v-else
           v-model="tab"
           :background-color="category.color"
           show-arrows
@@ -102,6 +128,7 @@ export default {
         },
         color: 'blue-grey lighten-5',
       },
+      selectedCategory: null,
     }
   },
   async fetch() {
@@ -110,6 +137,11 @@ export default {
       .get(`/menu/category/${this.$route.params.id}`)
       .then((response) => {
         this.category = response.data
+
+        this.selectedCategory = this.category.categories[0].name[
+          this.$i18n.locale
+        ]
+        this.tab = 0
         this.$nuxt.$emit('loader-false')
       })
       .catch((error) => {
@@ -147,6 +179,10 @@ export default {
     },
   },
   methods: {
+    selectCategory(subcategory, i) {
+      this.selectedCategory = subcategory.name[this.$i18n.locale]
+      this.tab = i
+    },
     async restore() {
       this.$nuxt.$emit('loader-true')
       this.$refs.RestoreDialogRef.hideDialog()
@@ -186,5 +222,8 @@ export default {
 /deep/ .v-expansion-panel-content__wrap {
   background-color: #efefef;
   padding: 0 !important;
+}
+.font-lg {
+  font-size: 2.5rem !important;
 }
 </style>
