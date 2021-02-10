@@ -91,7 +91,19 @@
               Ex.: https://vimeo.com/<strong style="font-weight: 700"
                 >504844831</strong
               >
-              (somente a parte marcada)
+              (somente a parte marcada) <br />
+            </v-list-item-subtitle>
+            <v-divider></v-divider>
+            <v-list-item-subtitle v-if="media.id">
+              <strong style="font-weight: 700">
+                Não é possível inserir vários vídeos nos campos abaixo no
+                momento da edição. Isso causará erro no carregamento do vídeo
+                atual.
+              </strong>
+            </v-list-item-subtitle>
+            <v-list-item-subtitle v-else>
+              Para cadastrar vários vídeos ao mesmo tempo coloque os ids
+              separados por vírgula. Ex: 504844831, 504844832
             </v-list-item-subtitle>
             <v-list-item-subtitle class="pt-3">
               <v-text-field

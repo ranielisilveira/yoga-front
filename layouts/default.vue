@@ -189,8 +189,8 @@ export default {
   },
 }
 </script>
-<style>
-.v-main__wrap {
+<style scoped>
+/deep/ .v-main__wrap {
   background-color: #efefef !important;
 }
 </style>

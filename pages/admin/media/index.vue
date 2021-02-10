@@ -36,9 +36,9 @@
               </template>
 
               <template #[`item.category`]="{ item }">
-                <span v-if="item.category">
+                <span v-if="item.category.category">
                   {{
-                    item.category.category.category
+                    item.category.category && item.category.category.category
                       ? item.category.category.category.name[$i18n.locale] +
                         ' > '
                       : ''
@@ -48,6 +48,8 @@
                       ? item.category.category.name[$i18n.locale] + ' > '
                       : ''
                   }}
+                </span>
+                <span v-if="item.category">
                   {{ item.category.name[$i18n.locale] }}
                 </span>
                 <span v-else> Categoria não encontrada </span>

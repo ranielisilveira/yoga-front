@@ -124,4 +124,8 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+/deep/ .v-main__wrap {
+  background-color: #fff !important;
+}
+</style>
