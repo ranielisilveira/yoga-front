@@ -48,6 +48,8 @@ export default {
     your_email: 'Seu Email.',
     your_password: 'Sua Senha.',
     email_confirmed: 'Sua conta foi verificada com sucesso.',
+    email_already_confirmed:
+      'Sua conta já foi ativada anteriormente. Use o formulário abaixo para entrar.',
     password_recovery: 'Recuperação de Senha',
     type_your_email: 'Digite seu email de login.',
     sent: 'Enviar',

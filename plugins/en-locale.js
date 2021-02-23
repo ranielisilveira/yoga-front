@@ -47,6 +47,8 @@ export default {
     your_email: 'Your Email.',
     your_password: 'Your password.',
     email_confirmed: 'Your Email has been successfully confirmed.',
+    email_already_confirmed:
+      'Your account has been activated previously. Use the form below to enter.',
     password_recovery: 'Password Recovery',
     type_your_email: 'Enter your login email.',
     sent: 'Submit',

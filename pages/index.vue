@@ -8,18 +8,22 @@
       <v-card-subtitle class="text-center mb-3">
         {{ $t('auth.enter_desc') }}
       </v-card-subtitle>
-      <v-card-subtitle class="text-center mb-3"
-        >Entre com seu email e senha.</v-card-subtitle
-      >
-
       <v-alert
-        v-if="confirm"
+        v-if="confirm && confirm == 'success'"
         type="success"
         border="top"
         color="green lighten-2"
         dark
       >
         {{ $t('auth.email_confirmed') }}
+      </v-alert>
+      <v-alert
+        v-if="confirm && confirm == 'already-activated'"
+        type="warning"
+        border="top"
+        dark
+      >
+        {{ $t('auth.email_already_confirmed') }}
       </v-alert>
 
       <v-card-text class="pb-0">
