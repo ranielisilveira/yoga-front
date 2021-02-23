@@ -61,13 +61,13 @@ export default {
     return {
       loader: false,
       snackbar: {
-        timeout: 3000,
+        timeout: 20000,
         show: false,
         color: undefined,
         text: ['Ocorreu um erro'],
       },
       textSnackbar: {
-        timeout: 5000,
+        timeout: 20000,
         show: false,
         color: undefined,
         text: 'Ocorreu um erro',
